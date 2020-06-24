@@ -1,0 +1,23 @@
+# Example of how to use the ninjafirewall filter in jail.local
+#
+# The maxretry override variable should be kept low since this
+# attack is rated critical or high by ninjafirewall, not an
+# accidental password typo or 404.
+#
+# JAILS
+#
+
+[ninjafirewall-logs]
+port = http,https
+filter = ninjafirewall-logs
+logpath = /var/www/vhosts/mydomain.com/public_html/wp-content/nfwlog/firewall_*.php
+maxretry = 3
+enabled = true
+
+
+[ninjafirewall-logs-1]
+port = http,https
+filter = ninjafirewall-logs
+logpath = /var/www/vhosts/myotherdomain.com/public_html/wp-content/nfwlog/firewall_*.php
+maxretry = 3
+enabled = true
